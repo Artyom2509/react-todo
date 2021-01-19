@@ -3,3 +3,4 @@ node_modules
 debug.log
 bash.exe.stackdump
 .jsbeautifyrc
+build
