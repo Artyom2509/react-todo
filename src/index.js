@@ -1,6 +1,15 @@
-import React from "react";
-import ReactDOM from "react-dom";
+import { Provider } from 'mobx-react';
+import React from 'react';
+import ReactDOM from 'react-dom';
+import App from './components/app';
+import { TodoState } from './state';
 
-import App from "./components/app";
+const store = new TodoState();
 
-ReactDOM.render(<App />, document.getElementById("root"));
+const app = (
+	<Provider store={store}>
+		<App />
+	</Provider>
+);
+
+ReactDOM.render(app, document.getElementById('root'));

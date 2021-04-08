@@ -1,12 +1,7 @@
-import React, { Component } from "react";
-import "./todo-list-item.css";
+import React, { Component } from 'react';
+import './todo-list-item.css';
 
 export default class TodoListItem extends Component {
-	constructor(props) {
-		super(props);
-		this.props = props;
-	}
-
 	render() {
 		const {
 			label,
@@ -17,13 +12,13 @@ export default class TodoListItem extends Component {
 			done,
 		} = this.props;
 
-		let classNames = "todo-list-item";
+		let classNames = ['todo-list-item'];
 
-		if (done) classNames += " done";
-		if (important) classNames += " important";
+		if (important) classNames.push('important');
+		if (done) classNames.push('done');
 
 		return (
-			<span className={classNames}>
+			<span className={classNames.join(' ')}>
 				<span className="todo-list-item-label" onClick={onToggleDone}>
 					{label}
 				</span>
