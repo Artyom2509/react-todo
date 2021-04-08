@@ -1,9 +1,9 @@
-import React from "react";
+import { inject } from 'mobx-react';
+import React from 'react';
+import TodoListItem from '../todo-list-item';
+import './todo-list.css';
 
-import TodoListItem from "../todo-list-item";
-import "./todo-list.css";
-
-const TodoList = ({ todos, onDeleted, onToggleImportant, onToggleDone }) => {
+const TodoList = ({ todos, store }) => {
 	const elements = todos.map((item) => {
 		const { id, ...itemProps } = item;
 
@@ -11,9 +11,9 @@ const TodoList = ({ todos, onDeleted, onToggleImportant, onToggleDone }) => {
 			<li key={id} className="list-group-item">
 				<TodoListItem
 					{...itemProps}
-					onDeleted={() => onDeleted(id)}
-          onToggleImportant={() => onToggleImportant(id)}
-          onToggleDone={() => onToggleDone(id)}
+					onDeleted={() => store.deleteItem(id)}
+					onToggleImportant={() => store.onToggleImportant(id)}
+					onToggleDone={() => store.onToggleDone(id)}
 				/>
 			</li>
 		);
@@ -22,4 +22,4 @@ const TodoList = ({ todos, onDeleted, onToggleImportant, onToggleDone }) => {
 	return <ul className="list-group todo-list">{elements}</ul>;
 };
 
-export default TodoList;
+export default inject('store')(TodoList);
