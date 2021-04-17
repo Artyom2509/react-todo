@@ -1,2 +1,3 @@
 # React Todo App
-Технологии: MOBX
+Технологии: MOBX.
+Тесты: Jest, Enzyme.
